@@ -18,6 +18,20 @@ public class Product {
     private int stock;
     private int numOfReviews;
 
+    public Product() {
+    }
+
+    public Product(String name, double price, String description, double rating, String category, String seller, int stock, int numOfReviews) {
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.rating = rating;
+        this.category = category;
+        this.seller = seller;
+        this.stock = stock;
+        this.numOfReviews = numOfReviews;
+    }
+
     public Long getId() {
         return id;
     }
