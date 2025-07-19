@@ -1,5 +1,8 @@
 package com.rinos.ecommweb.controllers;
 
+import com.rinos.ecommweb.models.Product;
+import com.rinos.ecommweb.services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,16 +13,16 @@ import java.util.Map;
 @RestController
 public class TestController {
 
+    @Autowired
+    private ProductService productService;
+
     @GetMapping("/test")
     public String test() {
         return "Hello, testing";
     }
 
     @GetMapping("/products")
-    public List<Map<String, Object>> getAllProducts() {
-        return Arrays.asList(
-                Map.of("name", "product1", "price", 234),
-                Map.of("name", "product1", "price", 123)
-        );
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 }
