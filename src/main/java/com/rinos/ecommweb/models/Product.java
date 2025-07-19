@@ -2,6 +2,8 @@ package com.rinos.ecommweb.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Products")
 public class Product {
@@ -18,10 +20,14 @@ public class Product {
     private int stock;
     private int numOfReviews;
 
+    @ElementCollection
+    @Column(name = "image_url")
+    private List<String> images;
+
     public Product() {
     }
 
-    public Product(String name, double price, String description, double rating, String category, String seller, int stock, int numOfReviews) {
+    public Product(String name, double price, String description, double rating, String category, String seller, int stock, int numOfReviews, List<String> images) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -30,6 +36,7 @@ public class Product {
         this.seller = seller;
         this.stock = stock;
         this.numOfReviews = numOfReviews;
+        this.images = images;
     }
 
     public Long getId() {
@@ -102,5 +109,13 @@ public class Product {
 
     public void setNumOfReviews(int numOfReviews) {
         this.numOfReviews = numOfReviews;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 }
